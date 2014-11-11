@@ -1,13 +1,13 @@
 //
-//  GameScene.h
+//  TitleScene.h
 //  Space Cat
 //
-
+//  Created by Audrey Jun on 2014-11-10.
 //  Copyright (c) 2014 com.lighthouselabs. All rights reserved.
-//  Test
+//
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface GameScene : SKScene <SKPhysicsContactDelegate>
+@interface TitleScene : SKScene
 
 @end
