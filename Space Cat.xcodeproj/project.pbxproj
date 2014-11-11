@@ -18,6 +18,7 @@
 		99B7ABE31A1157D900BBCD85 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B7ABE21A1157D900BBCD85 /* Util.m */; };
 		99B7ABE61A115D5D00BBCD85 /* SpaceDogNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B7ABE51A115D5D00BBCD85 /* SpaceDogNode.m */; };
 		99B7ABE91A11615600BBCD85 /* GroundNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B7ABE81A11615600BBCD85 /* GroundNode.m */; };
+		99B7AC241A11D41900BBCD85 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B7AC231A11D41900BBCD85 /* AVFoundation.framework */; };
 		AFECE2D51A07142000708CEF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AFECE2D41A07142000708CEF /* main.m */; };
 		AFECE2D81A07142000708CEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AFECE2D71A07142000708CEF /* AppDelegate.m */; };
 		AFECE2DB1A07142000708CEF /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AFECE2DA1A07142000708CEF /* GameScene.m */; };
@@ -66,6 +67,7 @@
 		99B7ABE51A115D5D00BBCD85 /* SpaceDogNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaceDogNode.m; sourceTree = "<group>"; };
 		99B7ABE71A11615600BBCD85 /* GroundNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundNode.h; sourceTree = "<group>"; };
 		99B7ABE81A11615600BBCD85 /* GroundNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroundNode.m; sourceTree = "<group>"; };
+		99B7AC231A11D41900BBCD85 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		AFECE2CF1A07142000708CEF /* Space Cat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Space Cat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFECE2D31A07142000708CEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFECE2D41A07142000708CEF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99B7AC241A11D41900BBCD85 /* AVFoundation.framework in Frameworks */,
 				99B7ABD01A1126B000BBCD85 /* CoreGraphics.framework in Frameworks */,
 				99B7ABCE1A1126AA00BBCD85 /* UIKit.framework in Frameworks */,
 				99B7ABCC1A11269A00BBCD85 /* Foundation.framework in Frameworks */,
@@ -117,6 +120,7 @@
 		99B7ABD11A1126B300BBCD85 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				99B7AC231A11D41900BBCD85 /* AVFoundation.framework */,
 				99B7ABCF1A1126B000BBCD85 /* CoreGraphics.framework */,
 				99B7ABCD1A1126AA00BBCD85 /* UIKit.framework */,
 				99B7ABCB1A11269A00BBCD85 /* Foundation.framework */,

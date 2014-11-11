@@ -10,4 +10,8 @@
 
 @implementation Util
 
++(NSInteger)randomWithMin:(NSInteger)min max:(NSInteger)max{
+    return arc4random()%((max+1)-min) + min; //arc4random() returns a random unsigned int. When modulo between arc4random’s result and range, you’ll get a range from 0 to 1 less than the range. Adding min to it will place the result in the (min, max) range.
+}
+
 @end
