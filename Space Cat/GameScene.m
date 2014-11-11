@@ -224,6 +224,14 @@
         }];
         
     }
+    
+    NSString *explosionPath = [[NSBundle mainBundle] pathForResource:@"Explosion" ofType:@"sks"];
+    SKEmitterNode *explosion = [NSKeyedUnarchiver unarchiveObjectWithFile:explosionPath];
+    explosion.position = position;
+    [self addChild:explosion];
+    [explosion runAction:[SKAction waitForDuration:2.0] completion:^{
+        [explosion removeFromParent];
+    }];
 }
 
 
