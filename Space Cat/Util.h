@@ -11,6 +11,8 @@
 static const int ProjectileSpeed = 400;
 static const int SpaceDogMinSpeed = -100;
 static const int SpaceDogMaxSpeed = -50;
+static const int MaxLives = 3;
+static const int PointsPerHit = 10;
 //for bitmask
 //Shift Operator - shift the bit left by 0.
 // 0001 << 1 = 0010

@@ -45,7 +45,6 @@
     return spaceDog;
 }
 
-
 - (BOOL) isDamaged {
     NSArray *textures;
     

@@ -14,6 +14,8 @@
 #import "GroundNode.h"
 #import "Util.h"
 #import <AVFoundation/AVFoundation.h>
+#import "HudNode.h"
+#import "GameOverNode.h"
 
 @interface GameScene ()
 
@@ -27,6 +29,10 @@
 @property (nonatomic) SKAction *explodeSFX;
 @property (nonatomic) SKAction *laserSFX;
 @property (nonatomic) AVAudioPlayer *backgroundMusic;
+@property (nonatomic) AVAudioPlayer *gameOverMusic;
+@property (nonatomic) BOOL gameOver;
+@property (nonatomic) BOOL gameOverShowing;
+@property (nonatomic) BOOL restart;
 
 @end
 
@@ -40,6 +46,9 @@
         self.addEnemyTimeInterval = 0;
         self.totalGameTimePlayed = 0;
         self.minSpeed = SpaceDogMinSpeed;
+        self.restart = NO;
+        self.gameOver = NO;
+        self.gameOverShowing = NO;
         
         SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"background_1"];
         background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)); //get middle of scene's frame
@@ -59,6 +68,10 @@
         [self addChild:ground];
         
         [self setUpSounds];
+        
+        //start at left edge of the screen and at the top of our screen // right below from the top
+        HudNode *hud = [HudNode hudAtPosition:CGPointMake(0, self.frame.size.height-20) inFrame:self.frame];
+        [self addChild:hud];
 
         
     }
@@ -75,6 +88,12 @@
     self.backgroundMusic = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
     self.backgroundMusic.numberOfLoops = -1; //repeat infinitely
     [self.backgroundMusic prepareToPlay]; //load and will have ready to play .. in didMoveToView (equivalent of ViewDidLoad)
+    
+    NSURL *url2 = [[NSBundle mainBundle] URLForResource:@"GameOver" withExtension:@"mp3"];
+    self.gameOverMusic = [[AVAudioPlayer alloc] initWithContentsOfURL:url2 error:nil];
+    self.gameOverMusic.numberOfLoops = 1; //repeat infinitely
+    [self.gameOverMusic prepareToPlay]; //load and will have ready to play .. in didMoveToView (equivalent of ViewDidLoad)
+
 }
 
 -(void)didMoveToView:(SKView *)view {
@@ -90,7 +109,7 @@
         self.totalGameTimePlayed += (currentTime - self.lastUpdateTimeInterval);
     }
     
-    if (self.timeSinceEnemyAdded > self.addEnemyTimeInterval) {
+    if (self.timeSinceEnemyAdded > self.addEnemyTimeInterval && !self.gameOver) {
         [self addSpaceDog];
         self.timeSinceEnemyAdded = 0;
     }
@@ -126,16 +145,42 @@
         self.minSpeed = SpaceDogMinSpeed - 0;
         self.maxSpeed = SpaceDogMaxSpeed - 0;
     }
+    
+    //add !self.gameOverShowing so don't keep generating nodes from performGameOver after the first time game over.
+    if (self.gameOver && !self.gameOverShowing) {
+        [self performGameOver];
+        self.gameOverShowing = YES;
+    }
+    
 }
-
-
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
-    for (UITouch *touch in touches) {
-        CGPoint position = [touch locationInNode:self];
-        [self shootProjectileTowardsPosition:position];
+    
+    if (!self.gameOver) {
+        for (UITouch *touch in touches) {
+            CGPoint position = [touch locationInNode:self];
+            [self shootProjectileTowardsPosition:position];
+        }
+    } else if (self.restart) {
+        
+        //safety measure that all current nodes are destroyed
+        for (SKNode *node in [self children]) {
+            [node removeFromParent];
+        }
+        //present brand new scene:
+        GameScene *scene = [GameScene sceneWithSize:self.view.bounds.size];
+        [self.view presentScene:scene];
     }
+}
+
+-(void)performGameOver {
+    GameOverNode *gameOverNode = [GameOverNode gameOverAtPosition:CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))];
+    [self addChild:gameOverNode];
+    self.restart = YES;
+    [gameOverNode performAnimation];
+    [self.backgroundMusic stop];
+    [self.gameOverMusic play];
 }
 
 -(void)shootProjectileTowardsPosition:(CGPoint)position {
@@ -186,6 +231,7 @@
         
         if ([spaceDog isDamaged]) {
             [self runAction:self.explodeSFX];
+            [self addPoints:PointsPerHit];
             [spaceDog removeFromParent];
             [projectile removeFromParent];
             [self createDebrisAtPosition:contact.contactPoint];
@@ -197,7 +243,18 @@
         [self runAction:self.damageSFX];
         [spaceDog removeFromParent];
         [self createDebrisAtPosition:contact.contactPoint];
+        [self loseLife];
     }
+}
+
+-(void)addPoints:(NSInteger)points {
+    HudNode *hud = (HudNode*)[self childNodeWithName:@"HUD"];
+    [hud addPoints:points];
+}
+
+-(void)loseLife {
+    HudNode *hud = (HudNode*)[self childNodeWithName:@"HUD"];
+    self.gameOver = [hud loseLife];
 }
 
 -(void)createDebrisAtPosition:(CGPoint)position {
@@ -220,12 +277,13 @@
         
         //remove from scene after 2 seconds:
         [debris runAction:[SKAction waitForDuration:2.0] completion:^{
-            [debris removeFromParent];
+        [debris removeFromParent];
         }];
         
     }
     
     NSString *explosionPath = [[NSBundle mainBundle] pathForResource:@"Explosion" ofType:@"sks"];
+    //the particle effect is stored in the sks file which needs to be deserialized into an object
     SKEmitterNode *explosion = [NSKeyedUnarchiver unarchiveObjectWithFile:explosionPath];
     explosion.position = position;
     [self addChild:explosion];

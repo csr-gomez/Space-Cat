@@ -37,8 +37,8 @@
     
     // Configure the view.
     SKView * skView = (SKView *)self.view;
-    skView.showsFPS = YES;
-    skView.showsNodeCount = YES;
+    skView.showsFPS = NO; //turn off when done testing
+    skView.showsNodeCount = NO;
     
     // Create and configure the scene.
     SKScene * scene = [TitleScene sceneWithSize:self.view.bounds.size];
