@@ -43,7 +43,7 @@
         
         SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"background_1"];
         background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)); //get middle of scene's frame
-        background.size = self.frame.size;
+        background.size = self.frame.size; 
         [self addChild:background];
         
         MachineNode *machine = [MachineNode machineAtPosition:CGPointMake(CGRectGetMidX(self.frame), 12)];
@@ -81,7 +81,7 @@
     [self.backgroundMusic play];
 }
 
--(void)update:(NSTimeInterval)currentTime { //every second the update method is being called, called before each frame is rendered / NSTimeInterval = current time in seconds, it's a double
+-(void)update:(NSTimeInterval)currentTime { //called right before every frame / every second the update method is being called, called before each frame is rendered / NSTimeInterval = current time in seconds, it's a double
 //    NSLog(@"%f", fmod(currentTime, 60)); //modulo - see how many seconds left
     
     //to make multiple space dogs:
@@ -129,7 +129,7 @@
 }
 
 
-//inherits from UIResponder???
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     for (UITouch *touch in touches) {
@@ -184,25 +184,21 @@
         SpaceDogNode *spaceDog = (SpaceDogNode *)firstBody.node;
         ProjectileNode *projectile = (ProjectileNode*)secondBody.node;
         
-        [self runAction:self.explodeSFX];
-        
-        [spaceDog removeFromParent];
-        [projectile removeFromParent];
+        if ([spaceDog isDamaged]) {
+            [self runAction:self.explodeSFX];
+            [spaceDog removeFromParent];
+            [projectile removeFromParent];
+            [self createDebrisAtPosition:contact.contactPoint];
+        }
         
     } else if ( firstBody.categoryBitMask == CollisionCategoryEnemy &&
                secondBody.categoryBitMask == CollisionCategoryGround ) {
-
         SpaceDogNode *spaceDog = (SpaceDogNode *)firstBody.node;
-        
         [self runAction:self.damageSFX];
-        
         [spaceDog removeFromParent];
+        [self createDebrisAtPosition:contact.contactPoint];
     }
-    
-    [self createDebrisAtPosition:contact.contactPoint];
-    
 }
-
 
 -(void)createDebrisAtPosition:(CGPoint)position {
     NSInteger numberOfPieces = [Util randomWithMin:5 max:20];
