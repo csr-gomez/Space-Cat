@@ -35,6 +35,11 @@
 {
     [super viewDidLayoutSubviews];
     
+    //test
+    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    testObject[@"foo"] = @"bar";
+    [testObject saveInBackground];
+    
     // Configure the view.
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = NO; //turn off when done testing

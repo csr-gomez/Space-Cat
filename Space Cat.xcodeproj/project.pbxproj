@@ -36,6 +36,7 @@
 		99B7AC4C1A12B4AE00BBCD85 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B7AC4B1A12B4AE00BBCD85 /* Security.framework */; };
 		99B7AC4E1A12B4B400BBCD85 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B7AC4D1A12B4B400BBCD85 /* StoreKit.framework */; };
 		99B7AC501A12B4BD00BBCD85 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B7AC4F1A12B4BD00BBCD85 /* SystemConfiguration.framework */; };
+		99B7AC531A12CA4200BBCD85 /* LaserNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B7AC521A12CA4200BBCD85 /* LaserNode.m */; };
 		AFECE2D51A07142000708CEF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AFECE2D41A07142000708CEF /* main.m */; };
 		AFECE2D81A07142000708CEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AFECE2D71A07142000708CEF /* AppDelegate.m */; };
 		AFECE2DB1A07142000708CEF /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AFECE2DA1A07142000708CEF /* GameScene.m */; };
@@ -104,6 +105,8 @@
 		99B7AC4B1A12B4AE00BBCD85 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		99B7AC4D1A12B4B400BBCD85 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		99B7AC4F1A12B4BD00BBCD85 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		99B7AC511A12CA4200BBCD85 /* LaserNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LaserNode.h; path = ../LaserNode.h; sourceTree = "<group>"; };
+		99B7AC521A12CA4200BBCD85 /* LaserNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaserNode.m; path = ../LaserNode.m; sourceTree = "<group>"; };
 		AFECE2CF1A07142000708CEF /* Space Cat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Space Cat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFECE2D31A07142000708CEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFECE2D41A07142000708CEF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -214,6 +217,8 @@
 				99B7ABE51A115D5D00BBCD85 /* SpaceDogNode.m */,
 				99B7ABE71A11615600BBCD85 /* GroundNode.h */,
 				99B7ABE81A11615600BBCD85 /* GroundNode.m */,
+				99B7AC511A12CA4200BBCD85 /* LaserNode.h */,
+				99B7AC521A12CA4200BBCD85 /* LaserNode.m */,
 				99B7ABDD1A114F4200BBCD85 /* ProjectileNode.h */,
 				99B7ABDE1A114F4200BBCD85 /* ProjectileNode.m */,
 				99B7AC311A129B4300BBCD85 /* HudNode.h */,
@@ -249,15 +254,15 @@
 		AFECE2D11A07142000708CEF /* Space Cat */ = {
 			isa = PBXGroup;
 			children = (
+				AFECE2D61A07142000708CEF /* AppDelegate.h */,
+				AFECE2D71A07142000708CEF /* AppDelegate.m */,
+				AFECE2DE1A07142000708CEF /* GameViewController.h */,
+				AFECE2DF1A07142000708CEF /* GameViewController.m */,
 				99B7ABD81A11468F00BBCD85 /* Scenes */,
 				99B7ABD91A11469800BBCD85 /* Nodes */,
 				99B7ABD11A1126B300BBCD85 /* Frameworks */,
 				AFECE2FD1A07143100708CEF /* Music */,
 				AFECE3051A07143100708CEF /* Sprites.atlas */,
-				AFECE2D61A07142000708CEF /* AppDelegate.h */,
-				AFECE2D71A07142000708CEF /* AppDelegate.m */,
-				AFECE2DE1A07142000708CEF /* GameViewController.h */,
-				AFECE2DF1A07142000708CEF /* GameViewController.m */,
 				AFECE2E11A07142000708CEF /* Main.storyboard */,
 				AFECE2E41A07142000708CEF /* Images.xcassets */,
 				AFECE2E61A07142000708CEF /* LaunchScreen.xib */,
@@ -428,6 +433,7 @@
 				99B7ABDC1A11490100BBCD85 /* SpaceCatNode.m in Sources */,
 				99B7ABE91A11615600BBCD85 /* GroundNode.m in Sources */,
 				99B7ABD71A11468300BBCD85 /* MachineNode.m in Sources */,
+				99B7AC531A12CA4200BBCD85 /* LaserNode.m in Sources */,
 				99B7ABE31A1157D900BBCD85 /* Util.m in Sources */,
 				99B7AC331A129B4300BBCD85 /* HudNode.m in Sources */,
 			);

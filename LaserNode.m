@@ -6,36 +6,25 @@
 //  Copyright (c) 2014 com.lighthouselabs. All rights reserved.
 //
 
-#import "ProjectileNode.h"
+#import "LaserNode.h"
 #import "Util.h"
 
-@implementation ProjectileNode
+@implementation LaserNode
 
 +(instancetype) projectileAtPosition:(CGPoint)position {
-    ProjectileNode *projectile = [self spriteNodeWithImageNamed:@"projectile_1"];
+    LaserNode *projectile = [self spriteNodeWithColor:[SKColor yellowColor] size:CGSizeMake(10, 10)];
     projectile.position = position;
-    projectile.name = @"Projectile";
+    projectile.name = @"Laser";
     
-    [projectile setUpAnimation];
     [projectile setupPhysicsBody];
     
     return projectile;
 }
 
--(void)setUpAnimation {
-    NSArray *textures = @[[SKTexture textureWithImageNamed:@"projectile_1"],
-                          [SKTexture textureWithImageNamed:@"projectile_2"],
-                          [SKTexture textureWithImageNamed:@"projectile_3"]];
-    
-    SKAction *animation = [SKAction animateWithTextures:textures timePerFrame:0.1];
-    
-    SKAction *repeatAction = [SKAction repeatActionForever:animation];
-    [self runAction:repeatAction];
-}
 
 -(void)setupPhysicsBody {
     self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.frame.size];
-    self.physicsBody.affectedByGravity = YES;
+    self.physicsBody.affectedByGravity = NO;
     self.physicsBody.categoryBitMask = CollisionCategoryProjectile;
     self.physicsBody.collisionBitMask = 0;
     self.physicsBody.contactTestBitMask = CollisionCategoryEnemy;

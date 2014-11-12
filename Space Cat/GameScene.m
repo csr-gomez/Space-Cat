@@ -10,6 +10,7 @@
 #import "MachineNode.h"
 #import "SpaceCatNode.h"
 #import "ProjectileNode.h"
+#import "LaserNode.h"
 #import "SpaceDogNode.h"
 #import "GroundNode.h"
 #import "Util.h"
@@ -36,7 +37,9 @@
 
 @end
 
-@implementation GameScene
+@implementation GameScene{
+    NSDictionary *timerInfo;
+}
 
 -(instancetype)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
@@ -98,6 +101,16 @@
 
 -(void)didMoveToView:(SKView *)view {
     [self.backgroundMusic play];
+    
+    self.lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(cellLongPressed:)];
+    self.lpgr.minimumPressDuration = 1.0f;
+    self.lpgr.allowableMovement = 100.0f;
+    self.lpgr.cancelsTouchesInView = NO;
+    self.lpgr.delaysTouchesBegan = NO;
+    self.lpgr.delaysTouchesEnded = NO;
+    self.lpgr.delegate = self;
+    
+    [self.view addGestureRecognizer:self.lpgr];
 }
 
 -(void)update:(NSTimeInterval)currentTime { //called right before every frame / every second the update method is being called, called before each frame is rendered / NSTimeInterval = current time in seconds, it's a double
@@ -163,7 +176,6 @@
             [self shootProjectileTowardsPosition:position];
         }
     } else if (self.restart) {
-        
         //safety measure that all current nodes are destroyed
         for (SKNode *node in [self children]) {
             [node removeFromParent];
@@ -196,6 +208,66 @@
     
     [self runAction:self.laserSFX];
 }
+
+- (void)cellLongPressed:(UIGestureRecognizer *)gestureRecognizer {
+    NSLog(@"cellLongPressed in action");
+    CGPoint position = [gestureRecognizer locationInView:self.view];
+    switch (gestureRecognizer.state) {
+        case UIGestureRecognizerStateBegan:
+            [self shootLaserTowardsPosition:position];
+            break;
+        case UIGestureRecognizerStateEnded:
+            if (self.laserTimer) {
+                [self.laserTimer invalidate];
+                self.laserTimer = nil;
+            }
+            break;
+        case UIGestureRecognizerStateChanged:
+            //change its shooting angle here
+            break;
+        case UIGestureRecognizerStateFailed:
+            //
+            break;
+            
+        default:
+            break;
+    }
+}
+
+-(void)shootLaserTowardsPosition:(CGPoint)position {
+    
+    SpaceCatNode *spaceCat = (SpaceCatNode*)[self childNodeWithName:@"SpaceCat"];
+    [spaceCat performTap];
+    
+    MachineNode *machine = (MachineNode*)[self childNodeWithName:@"Machine"]; //get access to the machine and its position
+    
+    CGPoint ourPosition = position;
+    
+    timerInfo =  @{@"machine": machine,
+                   @"positionX": [NSNumber numberWithFloat: ourPosition.x],
+                   @"positionY": [NSNumber numberWithFloat: ourPosition.y]
+                   };
+
+    
+    self.laserTimer = [NSTimer scheduledTimerWithTimeInterval:0.1
+                                                  target:self
+                                                selector:@selector(runGameLoop:)
+                                                userInfo:timerInfo
+                                                 repeats:YES];
+    
+    [self runAction:self.laserSFX];
+}
+
+-(void)runGameLoop:(NSTimer*)timer {
+    NSDictionary *info = [timer userInfo];
+    MachineNode *machine = [info valueForKey:@"machine"];
+    CGPoint position = CGPointMake([[info valueForKey:@"positionX"] floatValue], [[info valueForKey:@"positionY"] floatValue]);
+
+    LaserNode *projectile = [LaserNode projectileAtPosition:CGPointMake(machine.position.x, machine.position.y+machine.frame.size.height-15)]; //starting position of projectile
+    [self addChild:projectile];
+    [projectile moveTowardsPosition:position]; //where user touches the screen - see above in touchesBegan
+}
+
 
 -(void)addSpaceDog {
     
@@ -235,6 +307,11 @@
             [spaceDog removeFromParent];
             [projectile removeFromParent];
             [self createDebrisAtPosition:contact.contactPoint];
+        }
+        
+        if (self.laserTimer) {
+            [self.laserTimer invalidate];
+            self.laserTimer = nil;
         }
         
     } else if ( firstBody.categoryBitMask == CollisionCategoryEnemy &&

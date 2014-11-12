@@ -8,6 +8,10 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface GameScene : SKScene <SKPhysicsContactDelegate>
+@interface GameScene : SKScene <SKPhysicsContactDelegate, UIGestureRecognizerDelegate>
+
+@property (nonatomic) UILongPressGestureRecognizer *lpgr;
+@property (nonatomic) NSTimer *laserTimer;
+@property (nonatomic) NSTimer *stopLaserTimer;
 
 @end
