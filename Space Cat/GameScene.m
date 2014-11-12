@@ -17,6 +17,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "HudNode.h"
 #import "GameOverNode.h"
+#import "AppDelegate.h"
 
 @interface GameScene ()
 
@@ -73,8 +74,8 @@
         [self setUpSounds];
         
         //start at left edge of the screen and at the top of our screen // right below from the top
-        HudNode *hud = [HudNode hudAtPosition:CGPointMake(0, self.frame.size.height-20) inFrame:self.frame];
-        [self addChild:hud];
+        self.hud = [HudNode hudAtPosition:CGPointMake(0, self.frame.size.height-20) inFrame:self.frame];
+        [self addChild:self.hud];
 
         
     }
@@ -176,17 +177,37 @@
             [self shootProjectileTowardsPosition:position];
         }
     } else if (self.restart) {
-        //safety measure that all current nodes are destroyed
-        for (SKNode *node in [self children]) {
-            [node removeFromParent];
+        
+        UITouch *touch = [touches anyObject];
+        CGPoint location = [touch locationInNode:self];
+        SKNode *node = [self nodeAtPoint:location];
+        
+        //if fire button touched, bring the rain
+        if ([node.name isEqualToString:@"buttonNode"]) {
+            AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
+            appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"ScoreNavigation"];
+        } else {
+            
+            //safety measure that all current nodes are destroyed
+            for (SKNode *node in [self children]) {
+                [node removeFromParent];
+            }
+            //present brand new scene:
+            GameScene *scene = [GameScene sceneWithSize:self.view.bounds.size];
+            [self.view presentScene:scene];
+            
         }
-        //present brand new scene:
-        GameScene *scene = [GameScene sceneWithSize:self.view.bounds.size];
-        [self.view presentScene:scene];
+
     }
 }
 
 -(void)performGameOver {
+    
+    PFObject *score = [PFObject objectWithClassName:@"Scores"];
+    [score setObject:[PFUser currentUser] forKey:@"player"];
+    score[@"score"] = [NSNumber numberWithInteger:self.hud.score];
+    [score saveInBackground];
+    
     GameOverNode *gameOverNode = [GameOverNode gameOverAtPosition:CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))];
     [self addChild:gameOverNode];
     self.restart = YES;
@@ -249,7 +270,7 @@
                    };
 
     
-    self.laserTimer = [NSTimer scheduledTimerWithTimeInterval:0.1
+    self.laserTimer = [NSTimer scheduledTimerWithTimeInterval:0.01
                                                   target:self
                                                 selector:@selector(runGameLoop:)
                                                 userInfo:timerInfo

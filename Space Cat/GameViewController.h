@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
 #import <Parse/Parse.h>
+#import "AppDelegate.h"
 
 @interface GameViewController : UIViewController
 

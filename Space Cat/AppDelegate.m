@@ -21,8 +21,22 @@
     [Parse setApplicationId:@"xwF9tC9IXgyvi1w8GF2djWKZysvRM6Pywu96rBEZ"
                   clientKey:@"gXe3TeD0smp1u6LDajapzeYkytZqhuqsdVeNnDoc"];
     
-    //optional
+//    optional
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    PFUser *user = [PFUser currentUser];
+    
+    if (user)
+    {
+        self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+    }
+    else
+    {
+        UIViewController* rootController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        
+        self.window.rootViewController = rootController;
+    }
+
     
     return YES;
 }

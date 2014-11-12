@@ -12,7 +12,9 @@
 @implementation LaserNode
 
 +(instancetype) projectileAtPosition:(CGPoint)position {
-    LaserNode *projectile = [self spriteNodeWithColor:[SKColor yellowColor] size:CGSizeMake(10, 10)];
+    LaserNode *projectile = [self shapeNodeWithCircleOfRadius:5];
+    projectile.fillColor = [UIColor yellowColor];
+    projectile.lineWidth = 0;
     projectile.position = position;
     projectile.name = @"Laser";
     

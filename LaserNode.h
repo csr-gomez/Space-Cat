@@ -7,8 +7,8 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-
-@interface LaserNode : SKSpriteNode
+@interface LaserNode : SKShapeNode
+//@interface LaserNode : SKSpriteNode
 
 +(instancetype) projectileAtPosition:(CGPoint)position;
 -(void)moveTowardsPosition:(CGPoint)position;

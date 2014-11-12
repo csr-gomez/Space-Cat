@@ -35,23 +35,31 @@
 {
     [super viewDidLayoutSubviews];
     
-    //test
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    testObject[@"foo"] = @"bar";
-    [testObject saveInBackground];
-    
-    // Configure the view.
-    SKView * skView = (SKView *)self.view;
-    skView.showsFPS = NO; //turn off when done testing
-    skView.showsNodeCount = NO;
-    
-    // Create and configure the scene.
-    SKScene * scene = [TitleScene sceneWithSize:self.view.bounds.size];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
-    
-    
-    // Present the scene.
-    [skView presentScene:scene];
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser==nil) {
+        //no one is logged in, go to login page
+        AppDelegate *appDelegateTemp = [[UIApplication sharedApplication]delegate];
+        appDelegateTemp.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        
+    } else {
+        //if CurrentUser is logged in
+         NSLog(@"Current user: %@", currentUser.username);
+        
+        // Configure the view.
+        SKView * skView = (SKView *)self.view;
+        skView.showsFPS = NO; //turn off when done testing
+        skView.showsNodeCount = NO;
+        
+        // Create and configure the scene.
+        SKScene * scene = [TitleScene sceneWithSize:self.view.bounds.size];
+        scene.scaleMode = SKSceneScaleModeAspectFill;
+        
+        
+        // Present the scene.
+        [skView presentScene:scene];
+        
+    }
+
 }
 
 - (BOOL)prefersStatusBarHidden {

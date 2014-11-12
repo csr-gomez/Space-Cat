@@ -23,10 +23,6 @@
 		99B7AC301A1294B300BBCD85 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 99B7AC2E1A1294B300BBCD85 /* spark.png */; };
 		99B7AC331A129B4300BBCD85 /* HudNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B7AC321A129B4300BBCD85 /* HudNode.m */; };
 		99B7AC361A12A86200BBCD85 /* GameOverNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B7AC351A12A86200BBCD85 /* GameOverNode.m */; };
-		99B7AC3B1A12B46400BBCD85 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B7AC371A12B46400BBCD85 /* Bolts.framework */; };
-		99B7AC3C1A12B46400BBCD85 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B7AC381A12B46400BBCD85 /* Parse.framework */; };
-		99B7AC3D1A12B46400BBCD85 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B7AC391A12B46400BBCD85 /* ParseFacebookUtils.framework */; };
-		99B7AC3E1A12B46400BBCD85 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B7AC3A1A12B46400BBCD85 /* ParseUI.framework */; };
 		99B7AC401A12B48600BBCD85 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B7AC3F1A12B48600BBCD85 /* AudioToolbox.framework */; };
 		99B7AC421A12B48B00BBCD85 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B7AC411A12B48B00BBCD85 /* CFNetwork.framework */; };
 		99B7AC441A12B49600BBCD85 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B7AC431A12B49600BBCD85 /* CoreLocation.framework */; };
@@ -37,6 +33,15 @@
 		99B7AC4E1A12B4B400BBCD85 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B7AC4D1A12B4B400BBCD85 /* StoreKit.framework */; };
 		99B7AC501A12B4BD00BBCD85 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B7AC4F1A12B4BD00BBCD85 /* SystemConfiguration.framework */; };
 		99B7AC531A12CA4200BBCD85 /* LaserNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B7AC521A12CA4200BBCD85 /* LaserNode.m */; };
+		99B7AC581A13060800BBCD85 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B7AC541A13060800BBCD85 /* Bolts.framework */; };
+		99B7AC591A13060800BBCD85 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B7AC551A13060800BBCD85 /* Parse.framework */; };
+		99B7AC5A1A13060800BBCD85 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B7AC561A13060800BBCD85 /* ParseFacebookUtils.framework */; };
+		99B7AC5B1A13060800BBCD85 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B7AC571A13060800BBCD85 /* ParseUI.framework */; };
+		99B7AC5E1A13C9A900BBCD85 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B7AC5D1A13C9A900BBCD85 /* LoginViewController.m */; };
+		99B7AC611A13CA1000BBCD85 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B7AC601A13CA1000BBCD85 /* SignUpViewController.m */; };
+		99B7AC6C1A13F05500BBCD85 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B7AC6B1A13F05500BBCD85 /* CloudKit.framework */; };
+		99B7AC6F1A14082900BBCD85 /* ScoreboardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B7AC6E1A14082900BBCD85 /* ScoreboardTableViewController.m */; };
+		99B7AC721A1408A600BBCD85 /* ScoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B7AC711A1408A600BBCD85 /* ScoreCell.m */; };
 		AFECE2D51A07142000708CEF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AFECE2D41A07142000708CEF /* main.m */; };
 		AFECE2D81A07142000708CEF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AFECE2D71A07142000708CEF /* AppDelegate.m */; };
 		AFECE2DB1A07142000708CEF /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AFECE2DA1A07142000708CEF /* GameScene.m */; };
@@ -107,6 +112,20 @@
 		99B7AC4F1A12B4BD00BBCD85 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		99B7AC511A12CA4200BBCD85 /* LaserNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LaserNode.h; path = ../LaserNode.h; sourceTree = "<group>"; };
 		99B7AC521A12CA4200BBCD85 /* LaserNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaserNode.m; path = ../LaserNode.m; sourceTree = "<group>"; };
+		99B7AC541A13060800BBCD85 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../parse-library-1.5.0/Bolts.framework"; sourceTree = "<group>"; };
+		99B7AC551A13060800BBCD85 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../parse-library-1.5.0/Parse.framework"; sourceTree = "<group>"; };
+		99B7AC561A13060800BBCD85 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtils.framework; path = "../../../parse-library-1.5.0/ParseFacebookUtils.framework"; sourceTree = "<group>"; };
+		99B7AC571A13060800BBCD85 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../../parse-library-1.5.0/ParseUI.framework"; sourceTree = "<group>"; };
+		99B7AC5C1A13C9A900BBCD85 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
+		99B7AC5D1A13C9A900BBCD85 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
+		99B7AC5F1A13CA1000BBCD85 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignUpViewController.h; path = ../SignUpViewController.h; sourceTree = "<group>"; };
+		99B7AC601A13CA1000BBCD85 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignUpViewController.m; path = ../SignUpViewController.m; sourceTree = "<group>"; };
+		99B7AC621A13DA1600BBCD85 /* Space Cat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Space Cat.entitlements"; sourceTree = "<group>"; };
+		99B7AC6B1A13F05500BBCD85 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		99B7AC6D1A14082900BBCD85 /* ScoreboardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreboardTableViewController.h; path = ../ScoreboardTableViewController.h; sourceTree = "<group>"; };
+		99B7AC6E1A14082900BBCD85 /* ScoreboardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoreboardTableViewController.m; path = ../ScoreboardTableViewController.m; sourceTree = "<group>"; };
+		99B7AC701A1408A600BBCD85 /* ScoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScoreCell.h; path = ../ScoreCell.h; sourceTree = "<group>"; };
+		99B7AC711A1408A600BBCD85 /* ScoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScoreCell.m; path = ../ScoreCell.m; sourceTree = "<group>"; };
 		AFECE2CF1A07142000708CEF /* Space Cat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Space Cat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFECE2D31A07142000708CEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFECE2D41A07142000708CEF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -139,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99B7AC501A12B4BD00BBCD85 /* SystemConfiguration.framework in Frameworks */,
+				99B7AC6C1A13F05500BBCD85 /* CloudKit.framework in Frameworks */,
 				99B7AC4E1A12B4B400BBCD85 /* StoreKit.framework in Frameworks */,
 				99B7AC4C1A12B4AE00BBCD85 /* Security.framework in Frameworks */,
 				99B7AC4A1A12B4A800BBCD85 /* QuartzCore.framework in Frameworks */,
@@ -148,14 +168,14 @@
 				99B7ABD01A1126B000BBCD85 /* CoreGraphics.framework in Frameworks */,
 				99B7AC421A12B48B00BBCD85 /* CFNetwork.framework in Frameworks */,
 				99B7AC401A12B48600BBCD85 /* AudioToolbox.framework in Frameworks */,
-				99B7AC3E1A12B46400BBCD85 /* ParseUI.framework in Frameworks */,
 				99B7AC241A11D41900BBCD85 /* AVFoundation.framework in Frameworks */,
 				99B7ABCE1A1126AA00BBCD85 /* UIKit.framework in Frameworks */,
-				99B7AC3C1A12B46400BBCD85 /* Parse.framework in Frameworks */,
-				99B7AC3B1A12B46400BBCD85 /* Bolts.framework in Frameworks */,
 				99B7ABCC1A11269A00BBCD85 /* Foundation.framework in Frameworks */,
-				99B7AC3D1A12B46400BBCD85 /* ParseFacebookUtils.framework in Frameworks */,
 				99B7ABCA1A11268C00BBCD85 /* SpriteKit.framework in Frameworks */,
+				99B7AC581A13060800BBCD85 /* Bolts.framework in Frameworks */,
+				99B7AC591A13060800BBCD85 /* Parse.framework in Frameworks */,
+				99B7AC5A1A13060800BBCD85 /* ParseFacebookUtils.framework in Frameworks */,
+				99B7AC5B1A13060800BBCD85 /* ParseUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +192,10 @@
 		99B7ABD11A1126B300BBCD85 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				99B7AC541A13060800BBCD85 /* Bolts.framework */,
+				99B7AC551A13060800BBCD85 /* Parse.framework */,
+				99B7AC561A13060800BBCD85 /* ParseFacebookUtils.framework */,
+				99B7AC571A13060800BBCD85 /* ParseUI.framework */,
 				99B7AC4F1A12B4BD00BBCD85 /* SystemConfiguration.framework */,
 				99B7AC4D1A12B4B400BBCD85 /* StoreKit.framework */,
 				99B7AC4B1A12B4AE00BBCD85 /* Security.framework */,
@@ -236,6 +260,7 @@
 		AFECE2C61A07142000708CEF = {
 			isa = PBXGroup;
 			children = (
+				99B7AC6B1A13F05500BBCD85 /* CloudKit.framework */,
 				AFECE2D11A07142000708CEF /* Space Cat */,
 				AFECE2F01A07142000708CEF /* Space CatTests */,
 				AFECE2D01A07142000708CEF /* Products */,
@@ -254,16 +279,25 @@
 		AFECE2D11A07142000708CEF /* Space Cat */ = {
 			isa = PBXGroup;
 			children = (
+				99B7AC621A13DA1600BBCD85 /* Space Cat.entitlements */,
 				AFECE2D61A07142000708CEF /* AppDelegate.h */,
 				AFECE2D71A07142000708CEF /* AppDelegate.m */,
+				AFECE2E11A07142000708CEF /* Main.storyboard */,
 				AFECE2DE1A07142000708CEF /* GameViewController.h */,
 				AFECE2DF1A07142000708CEF /* GameViewController.m */,
+				99B7AC5C1A13C9A900BBCD85 /* LoginViewController.h */,
+				99B7AC5D1A13C9A900BBCD85 /* LoginViewController.m */,
+				99B7AC5F1A13CA1000BBCD85 /* SignUpViewController.h */,
+				99B7AC601A13CA1000BBCD85 /* SignUpViewController.m */,
+				99B7AC6D1A14082900BBCD85 /* ScoreboardTableViewController.h */,
+				99B7AC6E1A14082900BBCD85 /* ScoreboardTableViewController.m */,
+				99B7AC701A1408A600BBCD85 /* ScoreCell.h */,
+				99B7AC711A1408A600BBCD85 /* ScoreCell.m */,
 				99B7ABD81A11468F00BBCD85 /* Scenes */,
 				99B7ABD91A11469800BBCD85 /* Nodes */,
 				99B7ABD11A1126B300BBCD85 /* Frameworks */,
 				AFECE2FD1A07143100708CEF /* Music */,
 				AFECE3051A07143100708CEF /* Sprites.atlas */,
-				AFECE2E11A07142000708CEF /* Main.storyboard */,
 				AFECE2E41A07142000708CEF /* Images.xcassets */,
 				AFECE2E61A07142000708CEF /* LaunchScreen.xib */,
 				AFECE2D21A07142000708CEF /* Supporting Files */,
@@ -360,6 +394,12 @@
 				TargetAttributes = {
 					AFECE2CE1A07142000708CEF = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = R7PALQLS74;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					AFECE2EC1A07142000708CEF = {
 						CreatedOnToolsVersion = 6.1;
@@ -426,16 +466,20 @@
 				AFECE2E01A07142000708CEF /* GameViewController.m in Sources */,
 				99B7ABDF1A114F4200BBCD85 /* ProjectileNode.m in Sources */,
 				99B7AC361A12A86200BBCD85 /* GameOverNode.m in Sources */,
+				99B7AC721A1408A600BBCD85 /* ScoreCell.m in Sources */,
 				AFECE2D81A07142000708CEF /* AppDelegate.m in Sources */,
 				AFECE2DB1A07142000708CEF /* GameScene.m in Sources */,
+				99B7AC611A13CA1000BBCD85 /* SignUpViewController.m in Sources */,
 				99B7ABE61A115D5D00BBCD85 /* SpaceDogNode.m in Sources */,
 				AFECE2D51A07142000708CEF /* main.m in Sources */,
 				99B7ABDC1A11490100BBCD85 /* SpaceCatNode.m in Sources */,
+				99B7AC6F1A14082900BBCD85 /* ScoreboardTableViewController.m in Sources */,
 				99B7ABE91A11615600BBCD85 /* GroundNode.m in Sources */,
 				99B7ABD71A11468300BBCD85 /* MachineNode.m in Sources */,
 				99B7AC531A12CA4200BBCD85 /* LaserNode.m in Sources */,
 				99B7ABE31A1157D900BBCD85 /* Util.m in Sources */,
 				99B7AC331A129B4300BBCD85 /* HudNode.m in Sources */,
+				99B7AC5E1A13C9A900BBCD85 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,14 +601,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Space Cat/Space Cat.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Space",
 					Cat,
+					"/Users/audreyjun/Desktop/parse-library-1.5.0",
 				);
 				INFOPLIST_FILE = "Space Cat/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -572,14 +621,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Space Cat/Space Cat.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Space",
 					Cat,
+					"/Users/audreyjun/Desktop/parse-library-1.5.0",
 				);
 				INFOPLIST_FILE = "Space Cat/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
