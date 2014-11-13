@@ -205,8 +205,23 @@
     
     PFObject *score = [PFObject objectWithClassName:@"Scores"];
     [score setObject:[PFUser currentUser] forKey:@"player"];
-    score[@"score"] = [NSNumber numberWithInteger:self.hud.score];
+    NSNumber *hudScore = [NSNumber numberWithInteger:self.hud.score];
+    int hudIntScore = [hudScore intValue];
+    score[@"score"] = hudScore;
     [score saveInBackground];
+    
+    if (hudIntScore > 50) {
+        // Create our Installation query
+        NSString *currentPlayer = [PFUser currentUser].username;
+        NSString *winMessage = [NSString stringWithFormat:@"%@ just scored over 50 points!", currentPlayer];
+        
+        PFQuery *pushQuery = [PFInstallation query];
+        [pushQuery whereKey:@"deviceType" equalTo:@"ios"];
+        
+        // Send push notification to query
+        [PFPush sendPushMessageToQueryInBackground:pushQuery
+                                       withMessage:winMessage];
+    }
     
     GameOverNode *gameOverNode = [GameOverNode gameOverAtPosition:CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))];
     [self addChild:gameOverNode];
